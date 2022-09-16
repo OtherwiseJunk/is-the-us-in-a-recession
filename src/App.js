@@ -4,9 +4,8 @@ import './App.css';
 function App() {
   const [isRecession, setIsRecession] = useState('');
   const [cssClass, setcssClass] = useState('');
-  const serverHost = process.env.SERVERHOST;
   useEffect(() => {
-    fetch(serverHost+'/sahm')
+    fetch('https://panopticon.cacheblasters.com/sahm')
       .then((response) => {return response.json();})
       .then(function(json) {
         if(json.isRecession){
