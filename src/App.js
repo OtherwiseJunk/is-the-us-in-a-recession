@@ -8,7 +8,7 @@ function App() {
     fetch('https://panopticon.cacheblasters.com/sahm')
       .then((response) => {return response.json();})
       .then(function(json) {
-        if(!json.isRecession){
+        if(json.isRecession){
           setIsRecession('yes.');
           setcssClass('Yes');
         }
