@@ -21,27 +21,31 @@ function sendFavicon(res){
 async function sendSahmRuleIndex(res){
     res.writeHead(200, {'Content-Type': 'text/html'});
     var isRecessionText = '';
-    var divStyle = 'color: white; text-align: center; position:fixed; width:100%; height:100%; top:0px; left:0px; margin-left: auto; margin-right: auto;';
-    var h1Style = 'font-size: 30.0vw; margin: 0; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);'
+    var recessionClass = '';
 
-    if(/*await recessionCheck()*/true){
+    if(await recessionCheck()){
         isRecessionText = 'yes.'
-        divStyle += 'background-image: url(\'https://cacheblasters.nyc3.digitaloceanspaces.com/thisisfine.webp\'); background-repeat: no-repeat; background-size:100% 100%; -webkit-text-stroke-width: 10px; -webkit-text-stroke-color: black;';
+        recessionClass = 'recession';
     }
     else{
         isRecessionText = 'no.'
-        divStyle += 'background-color: black;';
+        recessionClass = 'noRecession';
     }
     var html = `<!DOCTYPE html>
     <head>
     <style>
     a { color: inherit; text-decoration: none;}
     a:hover { color: inherit; text-decoration: none; cursor:pointer; }
+    * { box-sizing: border-box }
+    .container { position:fixed; width:100%; height:100%; top:0px; left:0px; margin-left: auto; margin-right: auto; }
+    .recession { background-image: url('https://cacheblasters.nyc3.digitaloceanspaces.com/thisisfine.webp'); background-repeat: no-repeat; background-size:100% 100%; -webkit-text-stroke-width: 10px; -webkit-text-stroke-color: black;}
+    .noRecession { background-color: black; }
+    .text{font-size: 30.0vw; margin: 0; position: absolute; top: 45%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); color: white; text-align: center; }
     </style>
     </head>
     <body>
-    <div style="${divStyle}">
-        <h1 style="${h1Style}"><a href="https://fred.stlouisfed.org/series/SAHMREALTIME"/>${isRecessionText}</h1>
+    <div class="container ${recessionClass}">
+        <h1 class="text"><a href="https://fred.stlouisfed.org/series/SAHMREALTIME"/>${isRecessionText}</h1>
     </div>
     </body>
     </html>`;
@@ -57,7 +61,7 @@ async function recessionCheck(){
         return sahmRuleMap.get(dateKey);
     }
 
-    await fetch('https://panopticon.cacheblasters.com/sahm')
+    await fetch(process.env.SAHM)
     .then((response) => {return response.json();})
     .then(function(json) {
       isRecession = json.isRecession;
