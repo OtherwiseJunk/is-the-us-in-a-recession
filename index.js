@@ -5,7 +5,7 @@ import * as fs from "fs";
 const sahmRuleMap = new Map();
 const title = "Is the US In a recession?";
 const description =
-  'Uses the Real-time Sahm Rule Recession Indicator from FRED: https://fred.stlouisfed.org/series/SAHMREALTIME. \n\n Model is updated monthly based on a moving average of the national unemployment rate (U3), so not quite "Real-Time".';
+  'Uses the Real-time Sahm Rule Recession Indicator: https://fred.stlouisfed.org/series/SAHMREALTIME.\n\nModel is updated monthly based on a moving average of the unemployment rate (U3), so not quite "Real-Time".';
 const noRecessionImage =
   "https://upload.wikimedia.org/wikipedia/commons/8/8a/Stonks_emoji.png";
 const recessionImage =
