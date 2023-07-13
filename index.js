@@ -49,7 +49,7 @@ async function sendSahmRuleIndex(res) {
         <meta property="description" content="${description}" />
         <meta property="og:description" content="${description}" />
         <meta property="image" content="${isRecessionImageURL}" />
-        <meta property="image" content="${isRecessionImageURL}" />
+        <meta property="og:image" content="${isRecessionImageURL}" />
         <style>
             a { color: inherit; text-decoration: none;}
             a:hover { color: inherit; text-decoration: none; cursor:pointer; }
