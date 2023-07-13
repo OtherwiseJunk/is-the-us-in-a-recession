@@ -5,7 +5,7 @@ import * as fs from "fs";
 const sahmRuleMap = new Map();
 const title = "Is the US In a recession?";
 const description =
-  'Uses the Real-time Sahm Rule Recession Indicator from FRED: https://fred.stlouisfed.org/series/SAHMREALTIME. Model is updated monthly, as it is based on a moving average of the national unemployment rate (U3), so despite the name it is not quite "Real-Time".';
+  'Uses the Real-time Sahm Rule Recession Indicator from FRED: https://fred.stlouisfed.org/series/SAHMREALTIME. \n\n Model is updated monthly based on a moving average of the national unemployment rate (U3), so not quite "Real-Time".';
 const noRecessionImage =
   "https://upload.wikimedia.org/wikipedia/commons/8/8a/Stonks_emoji.png";
 const recessionImage =
@@ -19,7 +19,7 @@ http
       sendSahmRuleIndex(res);
     }
   })
-  .listen(8081);
+  .listen(112);
 
 function sendFavicon(res) {
   res.writeHead(200, { "Content-Type": "image/x-icon" });
@@ -63,6 +63,8 @@ async function sendSahmRuleIndex(res) {
     <body>
         <div class="container ${recessionClass}">
             <h1 class="text"><a href="https://fred.stlouisfed.org/series/SAHMREALTIME"/>${isRecessionText}</h1>
+            <a style="display: none;" rel="me" href="https://mastodon.cacheblasters.com/@OtherwiseJunk">Mastodon</a>
+            <a style="display: none;" rel="me" href="https://mastodo.neoliber.al/@OtherwiseJunk">Mastodon</a>
         </div>
     </body>
 </html>`;
