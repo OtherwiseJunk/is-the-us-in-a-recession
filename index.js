@@ -57,7 +57,7 @@ async function sendSahmRuleIndex(res) {
             .container { position:fixed; width:100%; height:100%; top:0px; left:0px; margin-left: auto; margin-right: auto; }
             .recession { background-image: url('${recessionImage}'); background-repeat: no-repeat; background-size:100% 100%; -webkit-text-stroke-width: 10px; -webkit-text-stroke-color: black;}
             .noRecession { background-color: black; }
-            .text{font-size: 30.0vw; margin: 0; position: absolute; top: 45%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); color: white; text-align: center; }
+            .text{font-size: 25.0vw; margin: 0; position: absolute; top: 45%; left: 50%; -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%); color: white; text-align: center; }
         </style>
     </head>
     <body>
