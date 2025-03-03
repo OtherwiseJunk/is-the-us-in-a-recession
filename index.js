@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 import * as fs from "fs";
 
 const sahmRuleMap = new Map();
-const title = "Is the US In a recession?";
+const title = "Is the US In a recession? Trump sure is trying to make it happen.";
 const description =
   "Uses the Real-time Sahm Rule Recession Indicator: https://fred.stlouisfed.org/series/SAHMREALTIME.\n\nModel is updated monthly based on a moving average of the unemployment rate (U3), so not quite Real-Time.";
 const noRecessionImage =
@@ -37,7 +37,7 @@ async function sendSahmRuleIndex(res) {
     recessionClass = "recession";
     isRecessionImageURL = recessionImage;
   } else {
-    isRecessionText = "no.";
+    isRecessionText = "not yet.";
     recessionClass = "noRecession";
     isRecessionImageURL = noRecessionImage;
   }
