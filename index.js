@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 import * as fs from "fs";
 
 const sahmRuleMap = new Map();
-const title = "Is the US In a recession? Trump sure is trying to make it happen,";
+const title = "Is the US In a recession?";
 const description =
   "Uses the Real-time Sahm Rule Recession Indicator: https://fred.stlouisfed.org/series/SAHMREALTIME.\n\nModel is updated monthly based on a moving average of the unemployment rate (U3), so not quite Real-Time.";
 const noRecessionImage =
@@ -31,16 +31,13 @@ async function sendSahmRuleIndex(res) {
   var isRecessionText = "";
   var recessionClass = "";
   var isRecessionImageURL = "";
-  var isRecessionMetaText = "";
 
   if (await recessionCheck()) {
     isRecessionText = "yes.";
-    isRecessionMetaText = "so yes.";
     recessionClass = "recession";
     isRecessionImageURL = recessionImage;
   } else {
     isRecessionText = "not yet.";
-    isRecessionMetaText = "but not yet.";
     recessionClass = "noRecession";
     isRecessionImageURL = noRecessionImage;
   }
@@ -48,7 +45,7 @@ async function sendSahmRuleIndex(res) {
   <!DOCTYPE html>
     <head>
         <title>${title} ${isRecessionText}*</title>
-        <meta property="og:title" content="${title} ${isRecessionMetaText}*" />
+        <meta property="og:title" content="${title} ${isRecessionText}*" />
         <meta property="description" content="${description}" />
         <meta property="og:description" content="${description}" />
         <meta property="image" content="${isRecessionImageURL}" />
